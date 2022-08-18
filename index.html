@@ -11,15 +11,16 @@
 			.lunbo {text-align: center; height: 715px; width: 505px; margin: 30px auto; box-shadow:0px 0px 10px rgba(0, 0, 0, .2);overflow: hidden;}
 			.lunbo img{height: 715px; width: 505px;}
 			.page{text-align: center; font-size: 32px; color: #9999;}
-			.text1 span{color:#6085cc;font-size: 34px;}
+            .page span{color:#6085cc;font-size: 34px;}
+			
 
-
+1652 2338
 			body{text-align: center}
-	         #box{width:505px;height: 715px;border:5px solid #e5e5e5;margin:20px auto;position:relative;}
+	         #box{width:826px;height: 1169px;border:5px solid #e5e5e5;margin:20px auto;position:relative;}
 	         #img{width:100%;height:100%;}
-	         #text1{width:100%;height:30px;position:absolute;left:0;bottom:0;background: #000;text-align:center; line-height:30px;font-size: 32px; color: #9999; filter:alpha(opacity:80); opacity:0.8;}
+	         
 	          
-	         a{width:40px; height:40px; background:#fff; filter:alpha(opacity:80); opacity:0.8; position:absolute; top:160px; font-size:18px; color:#000; text-align:center; line-height:40px; text-decoration:none; }
+	         a{width:60px; height:60px; background:#fff; filter:alpha(opacity:80); opacity:0.8; position:absolute; top:260px; font-size:18px; color:#000; text-align:center; line-height:60px; text-decoration:none; }
 	         a:hover { filter:alpha(opacity:30); opacity:0.3; }
 	         #prev {left:10px;background: #000; color: #fff;}
 	         #next {right:10px;background: #000;color: #fff;}
@@ -42,7 +43,7 @@
          
          function fn(){      //开始先定义一个公共函数方便下面调用
              oImg.src = arrSrc[num];     //图片的显示路径
-             oText1.innerHTML= num+1 +"/" + arrTxt.length;   //图中二号位置的数字显示
+             oText1.innerHTML= num+1;   //图中二号位置的数字显示
              // oText2.innerHTML=arrTxt[num];   //图中三号位置的文字显示
          }
          fn();/*切记，定义之后，这里一定要调用一下*/
@@ -102,13 +103,15 @@
 	</div>
 	 <div id="box" class="lunbo">
 	     <img id="img" />
-	     <p id="text1"></p>
+	     
 	     <!-- <div class="page"><span>1</span>/2</div> -->
 	     <!-- <p id="text2">图片文字加载中……</p> -->
 
 	     <a id="prev" href="javascript:void(0)"><</a>
 	     <a id="next" href="javascript:void(0)">></a>
 	 </div>
+     <!-- <p id="text1"></p> -->
+     <div class="page"><span id="text1">1</span>/2</div>
 	 </body>
 	<!-- <body>
 			
@@ -120,107 +123,3 @@
 		
 	</body> -->
 </html>
-
- <!-- DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>图片切换练习</title>
-    <style type="text/css">
-        * {
-            margin: 0;
-            padding: 0;
-        }
- 
-        #outer {
-            width: 500px;
-            margin: 50px auto;
-            padding: 30px;
-            background-color: aquamarine;
-        }
-        *{margin: 0; padding:0;}
-			html{-webkit-text-size-adjust:none;}
-
-			body{background-color: #f5f6fa;}
-			.lunbo {text-align: center; height: 715px; width: 505px; margin: 30px auto; box-shadow:0px 0px 10px rgba(0, 0, 0, .2);overflow: hidden;}
-			.lunbo img{height: 715px; width: 505px;}
-			.page{text-align: center; font-size: 32px; color: #9999;}
-			.page span{color:#6085cc;font-size: 34px;}
-    </style>
- 
-    <script type="text/javascript">
-        window.onload = function () {
-            /**
-             * 点击按钮实现图片的切换
-             */
- 
-                //3、获取img标签
-            var img = document.getElementsByTagName("img")[0];
- 
-            //5、创建一个数组用于保存图片的路径
-            var imgArr = ["img/1.5c6a2a1a.jpg", "img/2.7b2c4de7.jpg"];
- 
-            //6、创建一个变量保存当前正在显示的图片的索引
-            var index = 0;//默认显示的是第一张
- 
-            //8、获取id为info的元素
-            var info = document.getElementById("info");
- 
-            //9、设置提示文字
-            info.innerHTML = "一共" + imgArr.length + "张图片， 这是第" + (index + 1) + "张";
- 
-            //1、给上一张按钮绑定单击事件
-            var prev = document.getElementById("prev");
-            prev.onclick = function () {
- 
-                //7、当索引为第一张时，那么就要将索引设置为最后一张，由于采用的是--index，所以将index设置为5
-                if (index == 0) {
-                    index = 1;
-                }else{
-                	index = 0;
-                }
-                
- 
-                //4、切换图片，实质上就是修改img里面的src属性
-                img.src = imgArr[index];
- 
-                //9、设置提示文字
-                info.innerHTML = "一共" + imgArr.length + "张图片， 这是第" + (index + 1) + "张";
-            }
- 
-            //2、给下一张按钮绑定单击事件
-            var next = document.getElementById("next");
-            next.onclick = function () {
- 
-                //7、当索引为最后一张时，那么就要将索引设置为第一张，由于采用的是++index，所以将index设置为-1
-                if (index == 1) {
-                    index = -1;
-                }
- 
-                index = index + 1;
-                //4、切换图片，实质上就是修改img里面的src属性
-                img.src = imgArr[index];
- 
-                //9、设置提示文字
-                info.innerHTML = "一共" + imgArr.length + "张图片， 这是第" + (index + 1) + "张";
- 
-            }
-        }
-    </script>
-</head>
-<body>
-	<div style="text-align: center; margin-top: 30px; color: #999999;font-size:34px;">
-			<img src="img/圈钩.5c6e4876.png"><br>
-			恭喜您，校验成功
-		</div>
-<div id=outer align="center">
-    <p id=info></p>
-    <div class="lunbo">			
-    	<img src="img/1.5c6a2a1a.jpg"/><br/>
-		</div>
-    
-    <button id="prev">上一张</button>
-    <button id="next">下一张</button>
-</div>
-</body>
-</html> -->
