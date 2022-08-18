@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<title>票证查验</title>
+  <head>
+    <meta charset="utf-8" />
+    <title>票证查验</title>
         <meta http-equiv="X-UA-Compatible" content="IE=8">
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'/> 
 <link href='style.css' rel='stylesheet'/>
-		<style type="text/css">
-			*{margin: 0; padding:0;}
-			html{-webkit-text-size-adjust:none;}
+    <style type="text/css">
+      *{margin: 0; padding:0;}
+      html{-webkit-text-size-adjust:none;}
 
-			/*body{background-color: #f5f6fa;}*/
-			.lunbo {text-align: center; width: 100%;  margin: 30px auto; box-shadow:0px 0px 10px rgba(0, 0, 0, .2);overflow: hidden;}
-			.lunbo img{width: 100%; }
-			.page{text-align: center; font-size: 30px; color: #9999;}
-            .page span{color:#6085cc;font-size: 32px;}
-			body{text-align: center}
+      /*body{background-color: #fff;}*/
+      .lunbo {text-align: center; width: 100%;  margin: 30px auto; box-shadow:0px 0px 10px rgba(0, 0, 0, .2);overflow: hidden;}
+      .lunbo img{width: 100%; }
+      .page{text-align: center; font-size: 22px; color: #9999;}
+            .page span{color:#6085cc;font-size: 24px;}
+      body{text-align: center}
              .swipe {
                   overflow: hidden;
                   visibility: hidden;
@@ -30,21 +30,21 @@
                   width:100%;
                   position: relative;
                 }
-		</style>
-	</head>
-	<body>
-		 
-		<div style="text-align: center; margin-top: 30px; color: #999999;font-size:18px;"><img style="width:90px;" src="img/圈钩.5c6e4876.png"><br>恭喜您，校验成功</div>
-		<div id='mySwipe' style='max-width:70%;margin:0 auto' class='swipe'>
-		  <div class='swipe-wrap'>
-		    <div class="lunbo"><img  src="img/1.jpg"/></div>
-		    <div class="lunbo"><img  src="img/2.jpg"/></div>
-		  </div>
-		</div>
-		<div class="page"><span id="text1">1</span>/2</div>
-			 <script src="jq.js"></script>
-		<script src='swipe.js'></script>
-		<script>
+    </style>
+  </head>
+  <body>
+     
+    <div style="text-align: center; margin-top: 30px; color: #999999;font-size:18px;"><img style="width:90px;" src="img/圈钩.5c6e4876.png"><br>恭喜您，校验成功</div>
+    <div id='mySwipe' style='max-width:70%;margin:0 auto' class='swipe'>
+      <div class='swipe-wrap'>
+        <div class="lunbo"><img  src="img/1.jpg"/></div>
+        <div class="lunbo"><img  src="img/2.jpg"/></div>
+      </div>
+    </div>
+    <div class="page"><span id="text1">1</span>/2</div>
+       <script src="jq.js"></script>
+    <script src='swipe.js'></script>
+    <script>
       
 
 
@@ -52,33 +52,33 @@
 window.onload= function(){
          var elem = document.getElementById('mySwipe');
      var oText1=document.getElementById("text1");
-				window.mySwipe = Swipe(elem, {
-				  // startSlide: 4,
-				  // auto: 3000,
-				  // continuous: true,
-				  // disableScroll: true,
-				  // stopPropagation: true,
-				  callback: function(index, element) {
-				  	
-				  	// alert(index);
-				  	oText1.innerHTML= index+1;
-				  },
-				  // transitionEnd: function(index, element) {}
-				});
+        window.mySwipe = Swipe(elem, {
+          // startSlide: 4,
+          // auto: 3000,
+          // continuous: true,
+          // disableScroll: true,
+          // stopPropagation: true,
+          callback: function(index, element) {
+            
+            // alert(index);
+            oText1.innerHTML= index+1;
+          },
+          // transitionEnd: function(index, element) {}
+        });
          
      }
  </script>
-	 <!-- 
-	 <div id="box" class="lunbo">
-	     <img id="img" />
-	      
+   <!-- 
+   <div id="box" class="lunbo">
+       <img id="img" />
+        
 
-	     <a id="prev" href="javascript:void(0)"><</a>
-	     <a id="next" href="javascript:void(0)">></a>
-	 </div>
+       <a id="prev" href="javascript:void(0)"><</a>
+       <a id="next" href="javascript:void(0)">></a>
+   </div>
      
      <div class="page"><span id="text1">1</span>/2</div> -->
 
-	 </body>
-	
+   </body>
+  
 </html>
