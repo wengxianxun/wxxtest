@@ -3,122 +3,86 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>票证查验</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=8">
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'/> 
+<link href='style.css' rel='stylesheet'/>
 		<style type="text/css">
 			*{margin: 0; padding:0;}
 			html{-webkit-text-size-adjust:none;}
 
 			body{background-color: #f5f6fa;}
-			.lunbo {text-align: center; height: 715px; width: 505px; margin: 30px auto; box-shadow:0px 0px 10px rgba(0, 0, 0, .2);overflow: hidden;}
-			.lunbo img{height: 715px; width: 505px;}
+			.lunbo {text-align: center; width: 100%;  margin: 30px auto; box-shadow:0px 0px 10px rgba(0, 0, 0, .2);overflow: hidden;}
+			.lunbo img{width: 100%; }
 			.page{text-align: center; font-size: 40px; color: #9999;}
             .page span{color:#6085cc;font-size: 44px;}
-			
-
 			body{text-align: center}
-	         #box{width:826px;height: 1169px;border:5px solid #e5e5e5;margin:20px auto;position:relative;}
-	         #img{width:100%;height:100%;}
-	         
 	          
-	         a{width:80px; height:80px; background:#fff; filter:alpha(opacity:80); opacity:0.8; position:absolute; top:260px; font-size:18px; color:#000; text-align:center; line-height:80px; text-decoration:none; }
-	         a:hover { filter:alpha(opacity:30); opacity:0.3; }
-	         #prev {left:10px;background: #000; color: #fff;}
-	         #next {right:10px;background: #000;color: #fff;}
-		</style>
-<script>
-     window.onload= function(){
-         var oBtn1=document.getElementById("btn1");
-         var oBtn2=document.getElementById("btn2");
-         var oBox=document.getElementById("box");
-         var oImg=document.getElementById("img");
-         var oText1=document.getElementById("text1");
-         var p1=document.getElementById("p1");
-         // var oText2=document.getElementById("text2");
-         var oPrev=document.getElementById("prev");
-         var oNext=document.getElementById("next");
-         var arrSrc=["img/1.5c6a2a1a.jpg","img/2.7b2c4de7.jpg"];
-         var arrTxt=["文案1","文案2"];
-         var num=0;
-         var onOff=true; //true 循环  false 走顺序
-         
-         function fn(){      //开始先定义一个公共函数方便下面调用
-             oImg.src = arrSrc[num];     //图片的显示路径
-             oText1.innerHTML= num+1;   //图中二号位置的数字显示
-             // oText2.innerHTML=arrTxt[num];   //图中三号位置的文字显示
-         }
-         fn();/*切记，定义之后，这里一定要调用一下*/
- 
-         //循环按钮
-         // oBtn1.onclick=function(){
-         //     onOff=true;
-         //         p1.innerHTML="图片会循环"
- 
-         // };
-         // //顺序按钮
-         // oBtn2.onclick=function(){
-         //     onOff=false;
-         //         p1.innerHTML = "图片按顺序走"
- 
-         // };
-         oPrev.onclick = function(){
-             num--;  //点击左边的箭头那么就是num--
-             if(onOff){  //onOff默认是true所以就是走循环了
-                 if(num==-1){    //在一直减的过程中，数组里最小的就是0，所以等于-1的时候要循环下去所以让它显示最后一张
-                     num=arrSrc.length-1;
-                 }
- 
-             }else{  //否则onOff是false所以就是走顺序了
-                 if(num==-1){     //在一直减的过程中，数组里最小的就是0，所以等于-1的时候没有数据走了，所以让它显示第一张不能点击了
-                     num=0;  
-                     alert("已经是第一张了")
-                 }
-             }
-             fn();//判断好之后记得调用函数
-         };
-         //相反下面就是点击左边的箭头所做出的判断，道理同上
-         oNext.onclick = function(){
-             num++;
-             if(onOff){
-                 if(num==arrTxt.length){
-                     num=0;
-                 }
-             }else{
-                 if(num==arrTxt.length){
-                     num=arrSrc.length-1;
-                     alert("已经是最后一张了")
-                 }
-             }
-             fn();
-         }
-     }
- </script>
 
+             .swipe {
+                  overflow: hidden;
+                  visibility: hidden;
+                  position: relative;
+                }
+                .swipe-wrap {
+                  overflow: hidden;
+                  position: relative;
+                }
+                .swipe-wrap > div {
+                  float:left;
+                  width:100%;
+                  position: relative;
+                }
+		</style>
 	</head>
 	<body>
-	 <!-- <input id="btn1" type="button" value="循环切换">
-	 <input id="btn2" type="button" value="顺序切换"> -->
-	 <div style="text-align: center; margin-top: 30px; color: #999999;font-size:34px;">
-			<img src="img/圈钩.5c6e4876.png"><br>
-			恭喜您，校验成功
-	</div>
+		 
+
+		<div style='text-align:center;padding-top:20px;'></div>
+		<div style="text-align: center; margin-top: 30px; color: #999999;font-size:34px;"><img src="img/圈钩.5c6e4876.png"><br>恭喜您，校验成功</div>
+		<div id='mySwipe' style='max-width:80%;margin:0 auto' class='swipe'>
+		  <div class='swipe-wrap'>
+		    <div class="lunbo"><img  src="img/1.jpg"/></div>
+		    <div class="lunbo"><img  src="img/2.jpg"/></div>
+		  </div>
+		</div>
+		<div class="page"><span id="text1">1</span>/2</div>
+			 <script src="jq.js"></script>
+		<script src='swipe.js'></script>
+		<script>
+      
+
+
+
+window.onload= function(){
+         var elem = document.getElementById('mySwipe');
+     var oText1=document.getElementById("text1");
+				window.mySwipe = Swipe(elem, {
+				  // startSlide: 4,
+				  // auto: 3000,
+				  // continuous: true,
+				  // disableScroll: true,
+				  // stopPropagation: true,
+				  callback: function(index, element) {
+				  	
+				  	// alert(index);
+				  	oText1.innerHTML= index+1;
+				  },
+				  // transitionEnd: function(index, element) {}
+				});
+         
+     }
+ </script>
+	 <!-- 
 	 <div id="box" class="lunbo">
 	     <img id="img" />
-	     
-	     <!-- <div class="page"><span>1</span>/2</div> -->
-	     <!-- <p id="text2">图片文字加载中……</p> -->
+	      
 
 	     <a id="prev" href="javascript:void(0)"><</a>
 	     <a id="next" href="javascript:void(0)">></a>
 	 </div>
-     <!-- <p id="text1"></p> -->
-     <div class="page"><span id="text1">1</span>/2</div>
+     
+     <div class="page"><span id="text1">1</span>/2</div> -->
+
 	 </body>
-	<!-- <body>
-			
-		
-		<div class="lunbo">			
-			<img  src="img/1.5c6a2a1a.jpg"/>
-			<img src="img/2.7b2c4de7.jpg"/>			
-		</div>
-		
-	</body> -->
+	
 </html>
